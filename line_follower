@@ -1,0 +1,16 @@
+module Line_follower(
+input right_sensor,left_sensor,start,
+output reg [1:0]motor1,motor2
+);
+always@(start or right_sensor or left_sensor)
+begin
+    casex({start,right_sensor,left_sensor})
+        3'b100:begin motor1=2'b10; motor2=2'b10; end
+        3'b101:begin motor1=2'b10; motor2=2'b00; end
+        3'b110:begin motor1=2'b00; motor2=2'b10; end
+        3'b111:begin motor1=2'b00; motor2=2'b00; end
+        default:begin motor1=2'b00; motor2=2'b00; end
+    endcase 
+end  
+endmodule
+
